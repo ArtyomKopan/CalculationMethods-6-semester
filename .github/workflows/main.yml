@@ -1,0 +1,24 @@
+name: F# CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Build
+        run: for file in `find ./ -type f -name "*.sln"`; do dotnet build $file; done
+
+      - name: Tests
+        run: for file in `find ./ -type f -name "*.sln"`; do dotnet test $file; done
+
+      - name: Dotnet format
+        run: for file in `find ./ -type f -name "*.sln"`; do dotnet format $file; done
