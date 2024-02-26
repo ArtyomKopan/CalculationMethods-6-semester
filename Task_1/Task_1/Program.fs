@@ -21,8 +21,12 @@ let cond_s (A: Matrix<double>) (N: int) =
     (matrixNorm A N) * (matrixNorm (Matrix.inverse A) N)
 
 
-let A = matrix [[1.0; -1.0]; [2.0; 1.0]]
-let b = vector [-5.0; -7.0]
+let A = matrix [[1.0; 0.99]; [0.99; 0.98]]
+let b = vector [1.99; 1.97]
+
+printfn "cond_v(A) = %f" (cond_v A 2)
+printfn "cond_a(A) = %f" (cond_a A 2)
+printfn "cond_s(A) = %f" (cond_a A 2)
 
 let x = Matrix.solve A b
 
