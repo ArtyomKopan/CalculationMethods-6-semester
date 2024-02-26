@@ -26,4 +26,4 @@ let b = vector [-5.0; -7.0]
 
 let x = Matrix.solve A b
 
-printfn "%A" x
+printfn "%A" x 
