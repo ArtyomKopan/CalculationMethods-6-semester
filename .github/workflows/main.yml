@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows
 
     steps:
       - uses: actions/checkout@v3
@@ -12,7 +12,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '8.0.200'
 
       - name: Build
         run: for file in `find ./ -type f -name "*.sln"`; do dotnet build $file; done
